@@ -24,6 +24,7 @@
     <p>
     <h3>This is HTML</h3>
     <?php 
+    #the difference between echo and print: print can use concatinated comma seperated values and can return a value; echo can not. 
         echo "This text is displayed using standar PHP script delimeters <br> "; 
         print "second string";
         print ("<br>second string");
