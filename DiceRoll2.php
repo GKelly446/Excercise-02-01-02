@@ -28,6 +28,9 @@
       // arrays used for rolls & double rolls 
       $faceNamesSingular = array("one", "two", "three", "four", "five", "six");
       $faceNamesPlural = array("ones", "twos", "threes", "fours", "fives", "sixes");
+      $doublesCount = 0;
+      $rollNumber = 1;
+      define("NBR_ROLLS", 4);
     
       // function that displays double rolls in a certain format
       function checkForDoubles($die1, $die2) {
@@ -87,14 +90,21 @@
       }
         
       $dice = array();
-      $dice[0] = rand(1,6);
-      $dice[1] = rand(1,6);
-      echo "<p>";
-      $score = $dice[0] + $dice[1];
-      echo "The total score for the role was $score.<br>";
-      $doubles = checkForDoubles($dice[0], $dice[1]);
-      displayScoreText($score, $doubles);
-      echo "</p>";
+      while ($rollNumber <= 5) {
+           $dice[0] = rand(1,6);
+           $dice[1] = rand(1,6);
+           echo "<p>";
+           $score = $dice[0] + $dice[1];
+           echo "The total score for the role was $score.<br>";
+           $doubles = checkForDoubles($dice[0], $dice[1]);
+           displayScoreText($score, $doubles);
+           echo "</p>";  
+           if ($doubles) {
+               ++$doublesCount;
+           }
+           ++$rollNumber;
+      }
+      echo "<p>Doubles occurred on $doubles of the " . NBR_ROLLS . " rolls</p>";
     
     ?>
     
